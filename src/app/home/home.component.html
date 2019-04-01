@@ -1,0 +1,71 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <form (ngSubmit)="handleSubmit()" [formGroup]="userForm">
+
+        <table cellspacing="10">
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput formControlName="nom" class="input-angular" placeholder="Nom">
+              </mat-form-field>
+              <div *ngIf="nomCtrl.dirty && nomCtrl.hasError('isFirstCharUppercase')" class="input-error">
+                Doit commencer par une majuscule
+              </div>
+              <div *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')" class="input-error">
+                Le champ nom est requis
+              </div>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput formControlName="prenom" class="input-angular" placeholder="Prenom">
+              </mat-form-field>
+              <div *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('required')" class="input-error">
+                Le champ prenom est requis
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <mat-form-field>
+              <input matInput placeholder="Téléphone" formControlName="tel" class="input-angular">
+            </mat-form-field>
+            <div *ngIf="telCtrl.dirty && telCtrl.hasError('isTelValid')" class="input-error">
+              Le champ telephone n'est pas bon
+            </div>
+          </tr>
+          <tr>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email" class="input-angular">
+            </mat-form-field>
+            <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('required')" class="input-error">
+              Le champ email est requis
+            </div>
+            <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')" class="input-error">
+              Le champ email n'est pas un email
+            </div>
+          </tr>
+
+          <tr>
+            <mat-label>Connaissance</mat-label>
+            <mat-select formControlName="connaissance" class="input-angular">
+              <mat-option value="">--Choisir une connaissance--</mat-option>
+              <mat-option value="javascript">JavaScript</mat-option>
+              <mat-option value="typpescript">TypeScript</mat-option>
+              <mat-option value="angular">Angular</mat-option>
+            </mat-select>
+            <div *ngIf="connaissanceCtrl.dirty && connaissanceCtrl.hasError('required')" class="input-error">
+              Le champ connaissance est requis
+            </div>
+          </tr>
+          <mat-card-actions>
+            <button mat-raised-button type="submit" [disabled]="userForm.invalid">GO
+            </button>
+            <button mat-raised-button type="reset" (click)="handleClear()">Clear
+            </button>
+          </mat-card-actions>
+        </table>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>
