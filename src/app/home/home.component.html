@@ -29,7 +29,7 @@
             <mat-form-field>
               <input matInput placeholder="Téléphone" formControlName="tel" class="input-angular">
             </mat-form-field>
-            <div *ngIf="telCtrl.dirty && telCtrl.hasError('isTelValid')" class="input-error">
+            <div *ngIf="telCtrl.hasError('isTelValid')" class="input-error">
               Le champ telephone n'est pas bon
             </div>
           </tr>
